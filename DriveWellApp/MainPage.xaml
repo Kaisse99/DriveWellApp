@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DriveWellApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            
+            <!-- Title Bar -->
+            <Label 
+                   Margin="0,0,0,30"
+                   Padding="13"
+                   Text="Drivewell, Inc."
+                   VerticalOptions="Center"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   BackgroundColor="#512BD4"/>
+            
+            <Grid RowDefinitions="*, *, *, *, *, *, *, auto, auto"
+                  ColumnDefinitions="*, 3*, auto">
+                   
+                   <!-- VIN label and entry -->
+                <Label Grid.Row="0" Grid.Column="0"
+                       HorizontalOptions="End" VerticalOptions="Center"
+                       Text="VIN:"
+                       FontSize="Medium"/>
+                <Entry Grid.Row="0" Grid.Column="1"
+                       Margin="18, 6"
+                       x:Name="VinEntry"
+                       Placeholder="Alphanumeric string - length 17"/>
+                   
+                <!-- Car Make label and entry-->
+                <Label Grid.Row="1" Grid.Column="0"
+                       HorizontalOptions="End" VerticalOptions="Center"
+                       Text="Car Make:"
+                       FontSize="Medium"/>
+                <Entry Grid.Row="1" Grid.Column="1"
+                       Margin="18, 6"
+                       x:Name="CarMakeEntry"
+                       Placeholder="e.g. Mercedes, BMW"/>
+                   
+                   
+                <!-- Car Type label, picker and icon -->
+                   <Label Grid.Row="2" Grid.Column="0" 
+                       HorizontalOptions="End" VerticalOptions="Center"
+                       Text="Car Type:"
+                       FontSize="Medium"/>
+                   <HorizontalStackLayout Grid.Row="2" Grid.Column="1"
+                                          HorizontalOptions="Start"
+                                          Spacing="10">
+                   <Picker
+                       x:Name="CarTypePicker"
+                       WidthRequest="120"
+                       HorizontalOptions="Start"
+                       Margin="18, 6"
+                       SelectedIndexChanged="CarTypePickerIndex">
+                   </Picker>
+                   <Image
+                       x:Name="CarTypeImage"
+                       WidthRequest="70"
+                       HeightRequest="70"
+                       Aspect="AspectFit"/>
+                   </HorizontalStackLayout>
+                   <!-- Car Price Label and input -->
+                   
+                   <Label Grid.Row="3" Grid.Column="0" 
+                          HorizontalOptions="End" VerticalOptions="Center"
+                          Text="Car Price:"
+                          FontSize="Medium"/>
+                   <Entry Grid.Row="3" Grid.Column="1"
+                          Margin="18, 6"
+                          x:Name="CarPriceEntry"
+                          Placeholder="e.g. 35000.75"/>
+                   
+                   <!-- Car is used?-->
+                   <Label Grid.Row="4" Grid.Column="0" 
+                          HorizontalOptions="End" VerticalOptions="Center"
+                          Text="Is Used:"
+                          FontSize="Medium"/>
+                   <CheckBox Grid.Row="4" Grid.Column="1" 
+                             x:Name="IsUsed"
+                             HorizontalOptions="Start"
+                             Margin="18, 6"/>
+                   
+                   <!-- Car Model Year Label and Picker -->
+                   
+                   <Label Grid.Row="5" Grid.Column="0" 
+                          HorizontalOptions="End" VerticalOptions="Center"
+                          Text="Car Model:"
+                          FontSize="Medium"/>
+                   <Picker Grid.Row="5" Grid.Column="1"
+                           x:Name="ModelYearPicker"
+                           HorizontalOptions="Start"
+                           WidthRequest="150"
+                           Margin="18, 6">
+                   </Picker>
+                   
+                    <!-- Kilometers Label and Input -->
+                   
+                   <Label Grid.Row="6" Grid.Column="0" 
+                          HorizontalOptions="End" VerticalOptions="Center"
+                          Text="Kilometers:"
+                          FontSize="Medium"/>
+                   <Entry Grid.Row="6" Grid.Column="1"
+                          Margin="18, 6"
+                          x:Name="KilometersEntry"
+                          Placeholder="e.g. 22000"/>
+                   
+                   <!-- Buttons -->
+                   <HorizontalStackLayout Grid.Row="7" Grid.ColumnSpan="2" 
+                                          VerticalOptions="Center" HorizontalOptions="Center"
+                                          Padding="0">
+                       <Button Text="Add Car" Margin="10"
+                               WidthRequest="100"
+                               Clicked="AddCarOnClicked"/>
+                       <Button Text="Clear" Margin="10"
+                               WidthRequest="100"
+                               Clicked="ClearOnClicked"/>
+                       <Button Text="Update" Margin="10"
+                               WidthRequest="100"
+                               Clicked="UpdateOnClicked"/>
+                   </HorizontalStackLayout>
+                   <!-- List of available cars -->
+                   <ListView Grid.Row="8" Grid.ColumnSpan="2"
+                             Margin="10"
+                          x:Name="AvailableCarsListView"
+                             ItemSelected="OnCarSelected"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
